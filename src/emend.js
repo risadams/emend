@@ -48,7 +48,7 @@
           var anchor = anchors[i];
           var href = anchor.getAttribute('href');
           if (href.indexOf('mailto') !== 0) {
-            return;
+            ; // do nothing
           }
           if (href.indexOf('mailto:@') === 0) {
             anchor.setAttribute('data-emended-mailto', href.replace('mailto:@', ''));
