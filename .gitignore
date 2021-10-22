@@ -1,0 +1,10 @@
+node_modules
+# editor / cruft
+.vscode
+.DS_Store
+
+# node
+node_modules
+
+# Log files
+npm-debug.log*
