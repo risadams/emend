@@ -47,16 +47,17 @@
         for (var i = 0; i < anchors.length; i++) {
           var anchor = anchors[i];
           var href = anchor.getAttribute('href');
-          if (href.indexOf('mailto') !== 0) {
-            ; // do nothing
+          if (href.indexOf('mailto:') === 0) {
+            if (href.indexOf('mailto:@') === 0) {
+              anchor.setAttribute('data-emended-mailto', href.replace('mailto:@', ''));
+              anchor.href = '#';
+            } else {
+              this.protect(anchor);
+            }
+          } else {
+            continue; // ignore non-mailto links
           }
-          if (href.indexOf('mailto:@') === 0) {
-            anchor.setAttribute('data-emended-mailto', href.replace('mailto:@', ''));
-            anchor.href = '#';
-          }
-          else {
-            this.protect(anchor);
-          }
+
           anchor.addEventListener('click', (e) => {
             e.preventDefault();
             var target = e.target;

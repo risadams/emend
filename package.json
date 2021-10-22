@@ -1,6 +1,6 @@
 {
   "name": "emend",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight JS-based library to inline redact e-mail addresses to protect against against scraping.",
   "main": "index.js",
   "scripts": {
