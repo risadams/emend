@@ -9,7 +9,7 @@
  * @copyright Copyright © 2021 Ris Adams. All rights reserved.
  */
 
-; (function (root, factory, name) {
+ (function (root, factory, name) {
   'use strict';
   root[name] = factory();
   if (typeof define === 'function' && define.amd) {
