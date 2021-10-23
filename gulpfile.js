@@ -21,7 +21,16 @@ async function build(cb) {
 
   src(['src/*.js'])
     .pipe(sourcemaps.init())
-    .pipe(uglify())
+    .pipe(uglify({
+      mangle: true,
+      compress: {
+        drop_console: true
+      },
+      output: {
+        comments: false,
+        preamble: '/** @module emend @version 1.0.3 @license MIT @author Ris Adams <emend@risadams.com> @copyright Copyright © 2021 Ris Adams. All rights reserved. **/',
+      }
+    }))
     .pipe(sourcemaps.write())
     .pipe(dest('dist'));
   cb();
