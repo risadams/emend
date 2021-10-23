@@ -1,5 +1,7 @@
 # Emend
 
+[![CodeFactor](https://www.codefactor.io/repository/github/risadams/emend/badge)](https://www.codefactor.io/repository/github/risadams/emend)
+
 A simple library that will allow you to replace an e-mail address with an encoded version of the address.
 
 ## Install
