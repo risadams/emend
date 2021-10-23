@@ -26,6 +26,25 @@ and initialize it in your code (just before the end `body` tag):
 </script>
 ```
 
+### Option Defaults
+
+```js
+/**
+ * @param {String}  explicitPrefix - The prefix to use for explicit emendations.
+ * @param {String}  salt - The salt to use for emendations.
+ * @param {Boolean} explicitOnly - Whether to only emend explicit elements.
+ * @param {Number}  domRemoveDelay - The delay in milliseconds to remove the emendation from the DOM.
+ * @param {Number}  sendClickDelay - The delay in milliseconds to send a click event to the emendation.
+ */
+{
+  explicitPrefix: '@',
+  salt: '',
+  explicitOnly: false,
+  domRemoveDelay: 1200,
+  sendClickDelay: 500
+};
+```
+
 ## Contribute
 
 If you think this could be better, please [open an issue](https://github.com/risadams/Emend/issues/new)!

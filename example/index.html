@@ -16,12 +16,17 @@
   <br /><br /><br /><br />
 
   <a id='test2' href="mailto:@3f2e383f0b2e332a263b272e65282426">Message Me</a>
+  <a id='test4' href="mailto:#3f2e383f0b2e332a263b272e65282426">Message Me</a>
 
   <br /><br /><br /><br />
   <a id='test3' href="https://google.com">not mail</a>
 
   <script>
-    emend.init('ASALT');
+    emend.init({
+      salt: 'ASALT',
+      explicitOnly: false,
+      explicitPrefix: '#'
+    });
   </script>
 </body>
 
