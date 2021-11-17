@@ -1,5 +1,9 @@
 # Change log
 
+## v1.0.4
+
+- Resolve #11 - ensure checking nulls on anchor tags with no href.
+
 ## v1.0.3
 
 - Resolve #4 - init function now takes an option argument as opposed to a string salt.

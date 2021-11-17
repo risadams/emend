@@ -9,7 +9,7 @@
  * @copyright Copyright © 2021 Ris Adams. All rights reserved.
  */
 
- (function (root, factory, name) {
+(function (root, factory, name) {
   'use strict';
   root[name] = factory();
   if (typeof define === 'function' && define.amd) {
@@ -98,7 +98,7 @@
         for (var i = 0; i < anchors.length; i++) {
           var anchor = anchors[i];
           var href = anchor.getAttribute('href');
-          if (href.indexOf('mailto:') === 0) {
+          if (href && href.indexOf('mailto:') === 0) {
             if (!(this.options.explicitOnly) && href.indexOf(('mailto:' + this.options.explicitPrefix)) !== 0) {
               continue; //ignore mailto: links that are not explicitly prefixed, regardless of explicitOnly setting
             } else if (href.indexOf(('mailto:' + this.options.explicitPrefix)) === 0) {
