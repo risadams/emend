@@ -28,7 +28,7 @@ async function build(cb) {
       },
       output: {
         comments: false,
-        preamble: '/** @module emend @version 1.0.3 @license MIT @author Ris Adams <emend@risadams.com> @copyright Copyright © 2021 Ris Adams. All rights reserved. **/',
+        preamble: '/** @module emend @version 1.0.5 @license MIT @author Ris Adams <emend@risadams.com> @copyright Copyright © 2021 Ris Adams. All rights reserved. **/',
       }
     }))
     .pipe(sourcemaps.write())
