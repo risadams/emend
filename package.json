@@ -30,7 +30,7 @@
     "gulp-sourcemaps": "3.0.0",
     "gulp-uglify": "3.0.2",
     "gulp": "^4.0.2",
-    "jshint": "2.13.1"
+    "jshint": "2.13.2"
   },
   "engines": {
     "node": ">= 14",
