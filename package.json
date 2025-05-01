@@ -1,9 +1,22 @@
 {
   "name": "emend",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A lightweight JS-based library to inline redact e-mail addresses to protect against against scraping.",
-  "main": "index.js",
+  "main": "dist/emend.js",
+  "module": "dist/emend.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/emend.esm.js",
+      "require": "./dist/emend.cjs.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "clean": "rimraf dist",
+    "build": "npm run clean && node build.js",
+    "dev": "node build.js --watch",
     "test": "echo \"Warning: no tests available\" && exit 0"
   },
   "repository": {
@@ -22,15 +35,8 @@
   "type": "module",
   "homepage": "https://github.com/risadams/emend#readme",
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "del": "8.0.0",
-    "gulp-babel": "^8.0.0",
-    "gulp-cli": "^3.0.0",
-    "gulp-sourcemaps": "3.0.0",
-    "gulp-uglify": "3.0.2",
-    "gulp": "^5.0.0",
-    "jshint": "2.13.6"
+    "esbuild": "^0.19.5",
+    "rimraf": "^5.0.1"
   },
   "engines": {
     "node": ">= 14",

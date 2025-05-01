@@ -2,7 +2,7 @@
 
 [![CodeFactor](https://www.codefactor.io/repository/github/risadams/emend/badge)](https://www.codefactor.io/repository/github/risadams/emend)
 
-A simple library that will allow you to replace an e-mail address with an encoded version of the address.
+A simple library that will allow you to protect email addresses from web scrapers by encoding them.
 
 ## Install
 
@@ -12,23 +12,53 @@ npm install emend
 
 ## Usage
 
-include the library in your project:
+### Modern ES Module (Recommended)
 
 ```html
 <head>
-  <script src="emend.js"></script>
+  <script type="module">
+    import emend from './path/to/emend.esm.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      emend.init({
+        salt: 'YOUR_SALT_VALUE'
+      });
+    });
+  </script>
 </head>
 ```
 
-and initialize it in your code (just before the end `body` tag):
+### Traditional Script Tag
 
 ```html
-<script>
-  emend.init('YOUR SALT VALUE');
-</script>
+<head>
+  <script src="./path/to/emend.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      emend.init({
+        salt: 'YOUR_SALT_VALUE'
+      });
+    });
+  </script>
+</head>
 ```
 
-### Option Defaults
+### NPM Package (Node.js Environment)
+
+```js
+// ESM
+import emend from 'emend';
+
+// CommonJS
+const emend = require('emend');
+
+// Initialize
+emend.init({
+  salt: 'YOUR_SALT_VALUE'
+});
+```
+
+## Configuration Options
 
 ```js
 /**
@@ -47,6 +77,19 @@ and initialize it in your code (just before the end `body` tag):
 };
 ```
 
+## Development
+
+```sh
+# Install dependencies
+npm install
+
+# Build for production
+npm run build
+
+# Development with watch mode
+npm run dev
+```
+
 ## Contribute
 
 If you think this could be better, please [open an issue](https://github.com/risadams/Emend/issues/new)!
@@ -55,4 +98,4 @@ Please note that all interactions in this organization fall under our [Code of C
 
 ## License
 
-[MIT](LICENSE) © 1996+ Ris Adams
+[MIT](LICENSE) © 2021-2025 Ris Adams

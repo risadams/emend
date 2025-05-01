@@ -1,5 +1,15 @@
 # Change log
 
+## v1.1.0 (2025-05-01)
+
+- Modernized the codebase with ES modules
+- Removed AMD/CommonJS module pattern in favor of proper ES exports
+- Updated class structure with private fields and modern syntax
+- Replaced Gulp build system with esbuild
+- Added multiple output formats (ESM, CommonJS, IIFE)
+- Updated documentation to reflect modern usage
+- Code quality improvements throughout
+
 ## v1.0.4
 
 - Resolve #11 - ensure checking nulls on anchor tags with no href.
