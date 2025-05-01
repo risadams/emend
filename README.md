@@ -1,7 +1,11 @@
 # Emend.js
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/risadams/emend)
+[![npm](https://img.shields.io/npm/v/emend)](https://www.npmjs.com/package/emend)
+
 [![MIT License](https://img.shields.io/github/license/risadams/emend)](https://github.com/risadams/emend/blob/master/LICENSE)
+[![CodeFactor](https://www.codefactor.io/repository/github/risadams/emend/badge)](https://www.codefactor.io/repository/github/risadams/emend)
+
 
 A lightweight JavaScript library for protecting mailto anchor links from web scrapers.
 
@@ -25,6 +29,18 @@ Emend.js helps protect email addresses in your website by obfuscating mailto lin
 
 ```bash
 npm install emend
+```
+
+### yarn
+
+```bash
+yarn add emend
+```
+
+### pnpm
+
+```bash
+pnpm add emend
 ```
 
 ### Direct Download
