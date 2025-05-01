@@ -36,7 +36,7 @@
   "type": "module",
   "homepage": "https://github.com/risadams/emend#readme",
   "devDependencies": {
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.25.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "@babel/preset-env": "^7.27.1",
