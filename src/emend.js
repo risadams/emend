@@ -35,7 +35,7 @@ const cipher = (salt) => {
    * @returns {number[]} - Array of character codes
    */
   const str2chr = (text) => text.split('').map(c => c.charCodeAt(0));
-  
+
   /**
    * Converts a number to a two-character hex string.
    * @private
@@ -43,7 +43,7 @@ const cipher = (salt) => {
    * @returns {string} - Two-character hex representation
    */
   const byteHex = (n) => ("0" + Number(n).toString(16)).substr(-2);
-  
+
   /**
    * Applies the XOR operation with the salt to a character code.
    * @private
@@ -78,7 +78,7 @@ const decipher = (salt) => {
    * @returns {number[]} - Array of character codes
    */
   const str2chr = (rawVal) => rawVal.split('').map(c => c.charCodeAt(0));
-  
+
   /**
    * Applies the XOR operation with the salt to a character code.
    * @private
@@ -127,19 +127,19 @@ class Emend {
    * @type {string} - The version number of the library
    */
   #version = '1.1.0';
-  
+
   /**
    * @private
    * @type {Object} - Configuration options
    */
   #options;
-  
+
   /**
    * @private
    * @type {Function} - The encryption function
    */
   #cipher;
-  
+
   /**
    * @private
    * @type {Function} - The decryption function
@@ -197,7 +197,7 @@ class Emend {
       if (!href || href.indexOf('mailto:') !== 0) return;
 
       const explicitMailto = `mailto:${this.#options.explicitPrefix}`;
-      
+
       if (href.indexOf(explicitMailto) === 0) {
         // Handle explicitly marked mailto links
         anchor.setAttribute('data-emended-mailto', href.replace(explicitMailto, ''));
@@ -281,16 +281,16 @@ class Emend {
    */
   sendMail(element) {
     if (!element.hasAttribute('data-emended-mailto')) return;
-    
+
     const mailto = `mailto:${this.decode(element.getAttribute('data-emended-mailto'))}`;
-    
+
     // Create a temporary dom element and simulate a click to launch the mailto link
     const dom = document.createElement('a');
     dom.style.visibility = 'hidden';
     dom.style.position = 'absolute';
     dom.href = mailto;
     document.body.appendChild(dom);
-    
+
     setTimeout(() => dom.click(), this.#options.sendClickDelay);
     setTimeout(() => document.body.removeChild(dom), this.#options.domRemoveDelay);
   }
