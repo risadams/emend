@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emend.js - Basic Usage Example</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    .example-section {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    h2 {
+      color: #3498db;
+      margin-top: 2em;
+    }
+    code {
+      background-color: #f8f8f8;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: Consolas, Monaco, 'Andale Mono', monospace;
+      border: 1px solid #ddd;
+    }
+    .note {
+      background-color: #f8f4e6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin-bottom: 15px;
+    }
+  </style>
+  <!-- Load the library with type="module" -->
+  <script type="module">
+    import emend from '../dist/emend.esm.js';
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Basic initialization with just a salt value
+      emend.init({
+        salt: 'MySecretSalt'
+      });
+
+      // Display the current version in the page
+      document.getElementById('version-display').textContent = emend.version;
+    });
+  </script>
+</head>
+<body>
+  <h1>Emend.js - Basic Usage Example</h1>
+  <p>This example demonstrates the basic use of Emend.js to protect email addresses from web scrapers.</p>
+  <p>Current Emend version: <code id="version-display">loading...</code></p>
+  
+  <div class="note">
+    <strong>Note:</strong> The links below have been protected by Emend.js. When you click on them,
+    they will open your mail client with the correct email address.
+  </div>
+
+  <div class="example-section">
+    <h2>Standard Mailto Links</h2>
+    <p>These email links are automatically protected:</p>
+    <ul>
+      <li><a href="mailto:contact@example.com">Contact Us</a></li>
+      <li><a href="mailto:support@example.com">Support Department</a></li>
+      <li><a href="mailto:info@example.com?subject=Information%20Request">Request Information</a></li>
+    </ul>
+  </div>
+
+  <div class="example-section">
+    <h2>How It Works</h2>
+    <p>When the page loads, Emend.js:</p>
+    <ol>
+      <li>Searches for all <code>&lt;a&gt;</code> elements with <code>mailto:</code> links</li>
+      <li>Encrypts the email addresses using the provided salt</li>
+      <li>Stores the encrypted value in a <code>data-emended-mailto</code> attribute</li>
+      <li>Changes the <code>href</code> attribute to <code>#</code> to prevent scraping</li>
+      <li>Attaches click handlers to restore the functionality when users click</li>
+    </ol>
+    
+    <p>This makes the email addresses invisible to spam bots while preserving the user experience.</p>
+  </div>
+
+  <div class="example-section">
+    <h2>Code Example</h2>
+    <pre><code>
+// Import the library
+import emend from '/path/to/emend.esm.js';
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  emend.init({
+    salt: 'MySecretSalt'
+  });
+});
+    </code></pre>
+  </div>
+</body>
+</html>

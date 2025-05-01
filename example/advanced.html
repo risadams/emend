@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emend.js - Advanced Usage Example</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    .example-section {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    h2 {
+      color: #3498db;
+      margin-top: 2em;
+    }
+    code {
+      background-color: #f8f8f8;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: Consolas, Monaco, 'Andale Mono', monospace;
+      border: 1px solid #ddd;
+    }
+    pre {
+      background-color: #f8f8f8;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .note {
+      background-color: #f8f4e6;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin-bottom: 15px;
+    }
+    .warning {
+      background-color: #fde9e9;
+      padding: 10px;
+      border-left: 4px solid #e74c3c;
+      margin-bottom: 15px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+      border: 1px solid #ddd;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    th {
+      background-color: #3498db;
+      color: white;
+    }
+    .nav {
+      margin-top: 30px;
+      padding-top: 15px;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+  <!-- Load the library with type="module" -->
+  <script type="module">
+    import emend from '../dist/emend.esm.js';
+    
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Advanced initialization with multiple options
+      emend.init({
+        salt: 'AdvancedExampleSalt',
+        explicitPrefix: '#',
+        explicitOnly: false,
+        sendClickDelay: 300,
+        domRemoveDelay: 800
+      });
+
+      // Display the current version in the page
+      document.getElementById('version-display').textContent = emend.version;
+      
+      // Demo of manually encoding an email
+      document.getElementById('encode-button').addEventListener('click', () => {
+        const emailInput = document.getElementById('email-to-encode').value;
+        if (emailInput) {
+          const encoded = emend.encode(emailInput);
+          document.getElementById('encoded-result').textContent = encoded;
+        }
+      });
+      
+      // Demo of manually decoding an email
+      document.getElementById('decode-button').addEventListener('click', () => {
+        const encodedInput = document.getElementById('encoded-to-decode').value;
+        if (encodedInput) {
+          const decoded = emend.decode(encodedInput);
+          document.getElementById('decoded-result').textContent = decoded;
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Emend.js - Advanced Usage Example</h1>
+  <p>This example demonstrates advanced features of Emend.js, including explicit prefixes, custom options, and the manual encoding/decoding API.</p>
+  <p>Current Emend version: <code id="version-display">loading...</code></p>
+  
+  <div class="note">
+    <strong>Note:</strong> The links in this example have been protected with different methods.
+    Click them to see how Emend.js handles different scenarios.
+  </div>
+
+  <div class="example-section">
+    <h2>Standard Mailto Links</h2>
+    <p>These links are automatically protected (because <code>explicitOnly: false</code>):</p>
+    <ul>
+      <li><a href="mailto:contact@example.com">Contact Us</a></li>
+      <li><a href="mailto:support@example.com">Support Department</a></li>
+    </ul>
+  </div>
+
+  <div class="example-section">
+    <h2>Explicit Mailto Links</h2>
+    <p>These links are protected with an explicit prefix (<code>#</code>):</p>
+    <ul>
+      <li><a href="mailto:#726f6f7440657861627069652e636f6d">Admin Email (Pre-encoded)</a></li>
+      <li><a href="mailto:#admins@example.com">Administrators (Will be encoded on load)</a></li>
+    </ul>
+    <p class="note">The first link demonstrates using an already-encoded email in your HTML source. 
+    The second link will be encoded when the page loads.</p>
+  </div>
+
+  <div class="example-section">
+    <h2>Configuration Options</h2>
+    <p>This example initializes Emend with the following options:</p>
+    <table>
+      <tr>
+        <th>Option</th>
+        <th>Value</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>salt</td>
+        <td>"AdvancedExampleSalt"</td>
+        <td>The encryption salt used for encoding</td>
+      </tr>
+      <tr>
+        <td>explicitPrefix</td>
+        <td>"#"</td>
+        <td>The character used to mark explicit mailto links</td>
+      </tr>
+      <tr>
+        <td>explicitOnly</td>
+        <td>false</td>
+        <td>Protect all mailto links, not just explicit ones</td>
+      </tr>
+      <tr>
+        <td>sendClickDelay</td>
+        <td>300</td>
+        <td>Milliseconds to wait before triggering click events</td>
+      </tr>
+      <tr>
+        <td>domRemoveDelay</td>
+        <td>800</td>
+        <td>Milliseconds to wait before removing temporary DOM elements</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="example-section">
+    <h2>Manual Encoding/Decoding API</h2>
+    <p>You can use the Emend API to manually encode and decode email addresses:</p>
+    
+    <h3>Encode an Email:</h3>
+    <div>
+      <input type="text" id="email-to-encode" placeholder="Enter email to encode" style="padding: 5px; width: 250px;">
+      <button id="encode-button" style="padding: 5px 10px;">Encode</button>
+      <div style="margin-top: 10px;">
+        <strong>Result:</strong> <code id="encoded-result">Enter an email above and click encode</code>
+      </div>
+    </div>
+    
+    <h3>Decode an Encoded Value:</h3>
+    <div>
+      <input type="text" id="encoded-to-decode" placeholder="Enter encoded string to decode" style="padding: 5px; width: 250px;">
+      <button id="decode-button" style="padding: 5px 10px;">Decode</button>
+      <div style="margin-top: 10px;">
+        <strong>Result:</strong> <code id="decoded-result">Enter an encoded string above and click decode</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-section">
+    <h2>Advanced Code Example</h2>
+    <pre><code>
+// Import the library
+import emend from '/path/to/emend.esm.js';
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  emend.init({
+    salt: 'AdvancedExampleSalt',
+    explicitPrefix: '#',
+    explicitOnly: false,
+    sendClickDelay: 300,
+    domRemoveDelay: 800
+  });
+  
+  // Manual encoding example
+  const encoded = emend.encode('user@example.com');
+  console.log(encoded); // Output: hex-encoded string
+  
+  // Manual decoding example
+  const decoded = emend.decode(encoded);
+  console.log(decoded); // Output: 'user@example.com'
+});
+    </code></pre>
+  </div>
+
+  <div class="warning">
+    <strong>Security Note:</strong> The 'salt' value should be kept secret and unique to your site.
+    Using the same salt across different sites makes it easier for scrapers to decode your emails.
+  </div>
+
+  <div class="nav">
+    <p><a href="basic.html">Basic Example</a> | <a href="index.html">Main Example</a></p>
+  </div>
+</body>
+</html>

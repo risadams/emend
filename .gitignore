@@ -8,3 +8,5 @@ node_modules
 
 # Log files
 npm-debug.log*
+
+coverage/
