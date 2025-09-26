@@ -47,7 +47,7 @@
     "semantic-release": "^24.2.6",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@commitlint/cli": "^19.0.3",
+    "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^19.0.3",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0"
